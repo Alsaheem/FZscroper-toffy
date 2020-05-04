@@ -25,8 +25,7 @@ def home (request):
     perf_links = ''
 
     searchword = request.data.get('searchword')
-    print(request.data)
-    print(request.POST)
+
     br.open("https://www.fzmovies.net/")
     #initialize form i think
     br.select_form(nr=0)
