@@ -17,3 +17,4 @@ python istall -r requirements.txt
 python manage.py runserver
 
 cheers
+
