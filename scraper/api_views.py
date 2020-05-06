@@ -18,6 +18,8 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 from django.http import HttpResponse
 
 
+
+
 #Exceptions error 500 , 503 , Backend Error
 @api_view(['GET', 'POST'])
 def home (request):
@@ -40,7 +42,6 @@ def home (request):
 
     #initializing bs4 for scraping
     soup = BeautifulSoup(orders_html,'html.parser')
-
 
     #picking the closest div to the link we want to pick by class name
     divs = soup.find_all("div", {"class": "mainbox"})
@@ -86,7 +87,6 @@ def home (request):
 
     #the zip function is used to loop over each list and make thier values appear right ontop of each other and data would be used as a key in the template
     return Response({"message": "Success!", "data": zip(all_texts, perf_links)}, status=status.HTTP_200_OK )
-
 
 @api_view(['POST'])
 def generate_download_link(request):
