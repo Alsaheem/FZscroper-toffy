@@ -155,7 +155,7 @@ def generate_download_link(request):
 
     down_link = soup.find_all("input", {"name": "download1"})
     real_links = []
-
+#
     #download links generated
 
     label = ['link 1', 'link 2', 'link 3', 'link 4', 'link 5']
