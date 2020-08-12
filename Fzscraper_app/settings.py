@@ -34,7 +34,7 @@ INSTALLED_APPS = [
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-    "https://pedantic-lewin-bdf7dc.netlify.app/"
+    "https://golddigger.netlify.app"
 ]
 
 MIDDLEWARE = [
