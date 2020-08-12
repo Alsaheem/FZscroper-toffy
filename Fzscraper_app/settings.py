@@ -131,7 +131,8 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
+import warnings
+warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base" )
 SITE_ID = 1
 
 # To reconfigure the production database

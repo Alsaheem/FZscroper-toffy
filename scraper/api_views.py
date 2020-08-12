@@ -25,6 +25,8 @@ from django.http import HttpResponse
 def home (request):
     all_texts = ''
     perf_links = ''
+    image = ''
+    image_var_list = ''
 
     searchword = request.data.get('searchword')
 
@@ -52,12 +54,26 @@ def home (request):
     #this empty array would be used to store all the a tags in the mainbox div
     links = []
 
+    image_var_list = []
+    image = []
+
     #iterating through all available divs produces by the search
     for div in divs:
 
         #reavealing the href property in other get links
         a_tags = div.find_all('a', href=True)
 
+
+    #iterating through all available divs produces by the search
+    for div in divs:
+
+        #reavealing the href property in other get links
+        a_tags = div.find_all('a', href=True)
+
+        picstp_1 = div.find_all('img')
+
+        for pics in picstp_1:
+            image_var_list.append('https://fzmovies.net'+pics['src'])
         #this for loop appends all the links in mainbox div into the links array
         for row in a_tags:
             links.append(row['href'])
@@ -86,7 +102,7 @@ def home (request):
             perf_links.append(i)
 
     #the zip function is used to loop over each list and make thier values appear right ontop of each other and data would be used as a key in the template
-    return Response({"message": "Success!", "data": zip(all_texts, perf_links)}, status=status.HTTP_200_OK )
+    return Response({"message": "Success!", "data": zip(all_texts, perf_links, image_var_list)}, status=status.HTTP_200_OK )
 
 @api_view(['POST'])
 def generate_download_link(request):
@@ -155,7 +171,7 @@ def generate_download_link(request):
 
     down_link = soup.find_all("input", {"name": "download1"})
     real_links = []
-#
+
     #download links generated
 
     label = ['link 1', 'link 2', 'link 3', 'link 4', 'link 5']
